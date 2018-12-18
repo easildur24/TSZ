@@ -57,10 +57,10 @@ Full sample results can be find from [SampleSchoolDataYale.json](https://github.
                 "state_fips": 9,
                 "zip": "06520",
                 "women_only": 0,
-                "religious_affiliation": null,
+                "religious_affiliation": null, // identified as minority-serving institutions. p.7
                 "under_investigation": 0,
-                "region_id": 1,
-                "carnegie_basic": 15,
+                "region_id": 1, // *
+                "carnegie_basic": 15, // *
                 "branches": 1,
                 "men_only": 0,
                 "school_url": "www.yale.edu",
@@ -69,8 +69,8 @@ Full sample results can be find from [SampleSchoolDataYale.json](https://github.
                 "minority_serving": {},
                 "accreditor_code": "NEACHE",
                 "name": "Yale University",
-                "degree_urbanization": null,
-                "carnegie_size_setting": 17,
+                "degree_urbanization": null, // https://www.stat.fi/meta/kas/taajama_aste_en.html
+                "carnegie_size_setting": 17, // *
                 "title_iv": {}
                 },
                 "id": 130794,
