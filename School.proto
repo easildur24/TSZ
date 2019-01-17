@@ -73,9 +73,65 @@ message School {
     }
 
     // Contains admission and score information of the school.
-    message Admission { // TODO: Determine admission structure.
+    message Admission {
 
-        float admission_rate = 1;
+        message SATScores {
+
+            message SATScoresTemplate {
+                int32 critical_reading = 1;
+
+                int32 writing = 2;
+
+                int32 math = 3;
+            }
+
+            SATScoresTemplate 25th_percentile = 1;
+
+            SATScoresTemplate mid_point = 2;
+
+            SATScoresTemplate 75th_percentile = 3;
+        }
+
+        message ACTScores {
+
+            message ACTScoresTemplate {
+                int32 writing = 1;
+
+                int32 english = 2;
+
+                int32 math = 3;
+
+                int32 cumulative = 4;
+            }
+
+            ACTScoresTemplate 25th_percentile = 1;
+
+            ACTScoresTemplate mid_point = 2;
+
+            ACTScoresTemplate 75th_percentile = 3;
+        }
+
+        message TOEFLScores {
+            int32 min = 1;
+        }
+
+        message IELTSScores {
+            int32 min = 1;
+        }
+
+        message AdmissionRate {
+            float overall = 1;
+        }
+
+        AdmissionRate admission_rate = 1;
+
+        SATScores sat_scores = 2;
+
+        ACTScores act_scores = 3;
+
+        TOEFLScores toefl_scores = 4;
+
+        IELTSScores ielts_scores = 5;
     }
 
     // TODO: TBD. Currently only has offered degrees. Might not need an additional message for this.
@@ -148,7 +204,7 @@ message School {
     }
 
     // Contains varies ranking information of the school.
-    Ranking {
+    message Ranking {
 
         int32 us_overall = 1;
 
