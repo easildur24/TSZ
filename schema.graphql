@@ -4,5 +4,19 @@ schema {
 }
 
 type Query {
-	
+	school(id: ID!): School!
+	schools: [School!]!
+	schoolSuggestions: [SchoolSuggestion!]!
+	schoolRecommendations: [SchoolRecommendation!]!
 }
+
+type School {
+}
+
+type SchoolSuggestion {
+}
+
+type SchoolRecommendation {
+}
+
+
