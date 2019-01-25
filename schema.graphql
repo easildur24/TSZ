@@ -1,22 +1,39 @@
+# GraphQL schema file for colipedia.com GraphQL API
+
 schema {
 	query: Query
 	mutation: Mutation
+	subscription: Subscription
 }
 
 type Query {
-	school(id: ID!): School!
-	schools: [School!]!
-	schoolSuggestions: [SchoolSuggestion!]!
+	schoolDetails(id: ID!): SchoolDetailsItem!
+	schoolList(schoolList: SchoolListInput): [SchoolListItem!]!
+	schoolSuggestions(searchInput: String!): [SchoolSuggestion!]!
 	schoolRecommendations: [SchoolRecommendation!]!
 }
 
-type School {
+type SchoolDetailsItem {
+}
+
+type SchoolListItem {
+}
+
+input SchoolListInput {
+  offset: int = 0
+  limit: int = 20
 }
 
 type SchoolSuggestion {
 }
 
 type SchoolRecommendation {
+}
+
+type Mutation {
+}
+
+type Subscription {
 }
 
 
