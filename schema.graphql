@@ -41,7 +41,7 @@ type Overview {
 	description: String
 	notableRankings: [Ranking]
 	badges: [Badge]
-	location：Location
+	location: Location
 	url: String
 	menOnly: Boolean
 	womenOnly: Boolean
