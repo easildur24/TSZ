@@ -13,6 +13,18 @@ type Query {
 	schoolRecommendations: [SchoolRecommendation!]!
 }
 
+input SchoolListInput {
+	sortBy: SortByColumn
+}
+
+enum SortByColumn {
+	US_RANK
+	SAT
+	ACT
+	NUM_STUDENTS
+	TOEFL
+}
+
 type SchoolDetailsItem {
 	id: ID!
 	overview: Overview
@@ -121,6 +133,9 @@ type Cost {
 }
 
 type Demographics {
+	numStudents: Int
+	numUndergraduates: Int
+	numGraduates: Int
 }
 
 type Geography {
