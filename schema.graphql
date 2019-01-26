@@ -14,6 +14,56 @@ type Query {
 }
 
 type SchoolDetailsItem {
+	id: ID
+	overview: Overview
+	admission: Admission
+	academics: Academics
+	cost: Cost
+	demographics: Demographics
+	geography: Geography
+}
+
+type Overview {
+	name: String!
+	description: String
+	badges: [Badge]
+	location：Location
+	url: String
+	menOnly: Boolean
+	womenOnly: Boolean
+	operating: Boolean
+	religiousAffiliation: Boolean
+	onlineOnly: Boolean
+}
+
+type Badge {
+	tooltip: String
+	url: String
+}
+
+type Location {
+	latittude: Float
+	longitude: Float
+	state: String
+	city: String
+	zip: String
+}
+
+type Admission {
+
+}
+
+type Academics {
+	
+}
+
+type Cost {
+}
+
+type Demographics {
+}
+
+type Geography {
 }
 
 type SchoolListItem {
@@ -31,9 +81,11 @@ type SchoolRecommendation {
 }
 
 type Mutation {
+  # Placeholder for user profile actions
 }
 
 type Subscription {
+  # Upvote feature
 }
 
 
