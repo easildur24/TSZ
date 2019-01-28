@@ -2,8 +2,6 @@
 
 schema {
 	query: Query
-	mutation: Mutation
-	subscription: Subscription
 }
 
 type Query {
@@ -11,18 +9,6 @@ type Query {
 	schoolList(schoolList: SchoolListInput): [SchoolListItem!]!
 	schoolSuggestions(searchInput: String!): [SchoolSuggestion!]!
 	schoolRecommendations: [SchoolRecommendation!]!
-}
-
-input SchoolListInput {
-	sortBy: SortByColumn
-}
-
-enum SortByColumn {
-	US_RANK
-	SAT
-	ACT
-	NUM_STUDENTS
-	TOEFL
 }
 
 type SchoolDetailsItem {
@@ -89,17 +75,17 @@ type Admission {
 	studentResponseDeadline: Date
 }
 
+type ActScores {
+	percentile25th: ActScoresTemplate
+	mid: ActScoresTemplate
+	percentile75th: ActScoresTemplate
+}
+
 type ActScoresTemplate {
 	writing: Int
 	english: Int
 	math: Int
 	Cumulative: Int
-}
-
-type ActScores {
-	25thPercentile: ActScoresTemplate
-	mid: ActScoresTemplate
-	75thPercentile: ActScoresTemplate
 }
 
 type SatScoresTemplate {
@@ -109,9 +95,9 @@ type SatScoresTemplate {
 }
 
 type SatScores {
-	25thPercentile: SatScoresTemplate
+	percentile25th: SatScoresTemplate
 	mid: SatScoresTemplate
-	75thPercentile: SatScoresTemplate
+	percentile75th: SatScoresTemplate
 }
 
 type Academics {
@@ -130,6 +116,8 @@ type college {
 }
 
 type Cost {
+	tuitionUndergrad: Int
+	tuitionGrad: Int
 }
 
 type Demographics {
@@ -139,6 +127,21 @@ type Demographics {
 }
 
 type Geography {
+	location: Location
+}
+
+input SchoolListInput {
+	sortBy: SortByColumn
+	offset: Int = 0
+	limit: Int = 20
+}
+
+enum SortByColumn {
+	US_RANK
+	SAT
+	ACT
+	NUM_STUDENTS
+	TOEFL
 }
 
 type SchoolListItem {
@@ -150,27 +153,16 @@ type SchoolListItem {
 	acceptanceRate: Float
 	actScores: ActScores
 	satScores: SatScores
-	toeflScores: ToeflScores
+	toeflMinScore: Int
 	regularDeadline: Date
 }
 
-input SchoolListInput {
-  offset: Int = 0
-  limit: Int = 20
-}
-
 type SchoolSuggestion {
+	names: [String]
 }
 
 type SchoolRecommendation {
-}
-
-type Mutation {
-  # Placeholder for user profile actions
-}
-
-type Subscription {
-  # Upvote feature
+	names: [String]
 }
 
 
