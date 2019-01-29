@@ -1,0 +1,231 @@
+syntax = "proto3";
+
+// Contains an entire single school data.
+message School {
+
+    enum SchoolType {
+
+        TYPE_UNSPECIFIED = 0;
+
+        PUBLIC_UNIVERISTY = 1;
+
+        PRIVATE_UNIVERISTY = 2;
+
+        PUBLIC_COLLEGE = 3;
+
+        PRIVATE_COLLEGE = 4;
+
+        PUBLIC_HIGH_SCHOOL = 5;
+
+        PRIVATE_HIGH_SCHOOL = 6;
+
+        PUBLIC_CC = 7;
+
+        PRIVATE_CC = 8;
+    }
+
+    // Contains general information of the school.
+    message SchoolInfo {
+
+        // Contains location information of the school.
+        message LocationInfo {
+            float lat = 1;
+
+            float lon = 2;
+
+            string state = 3;
+
+            string city = 4;
+
+            string zip = 5;
+        }
+
+        // Contains the majority and highest degrees graduated of the current year.
+        message DegreesAwarded {
+            predominant = 1;
+
+            heighest = 2;
+        }
+
+        string name = 1;
+
+        string chinese_name = 2;
+
+        string description = 3;
+
+        LocationInfo location_info = 4;
+
+        string school_url = 5;
+
+        string cost_calculator_url = 6;
+
+        bool men_only = 7;
+
+        bool women_only = 8;
+
+        bool operating = 9; 
+
+        DegreesAwarded degrees_awarded = 10;
+
+        string religious_affiliation = 11;
+
+        bool online_only = 12;
+    }
+
+    // Contains admission and score information of the school.
+    message Admission {
+
+        message SATScores {
+
+            message SATScoresTemplate {
+                int32 critical_reading = 1;
+
+                int32 writing = 2;
+
+                int32 math = 3;
+            }
+
+            SATScoresTemplate 25th_percentile = 1;
+
+            SATScoresTemplate mid_point = 2;
+
+            SATScoresTemplate 75th_percentile = 3;
+        }
+
+        message ACTScores {
+
+            message ACTScoresTemplate {
+                int32 writing = 1;
+
+                int32 english = 2;
+
+                int32 math = 3;
+
+                int32 cumulative = 4;
+            }
+
+            ACTScoresTemplate 25th_percentile = 1;
+
+            ACTScoresTemplate mid_point = 2;
+
+            ACTScoresTemplate 75th_percentile = 3;
+        }
+
+        message TOEFLScores {
+            int32 min = 1;
+        }
+
+        message IELTSScores {
+            int32 min = 1;
+        }
+
+        message AdmissionRate {
+            float overall = 1;
+        }
+
+        AdmissionRate admission_rate = 1;
+
+        SATScores sat_scores = 2;
+
+        ACTScores act_scores = 3;
+
+        TOEFLScores toefl_scores = 4;
+
+        IELTSScores ielts_scores = 5;
+    }
+
+    // TODO: TBD. Currently only has offered degrees. Might not need an additional message for this.
+    message Academics {
+
+    }
+
+    // Contains varies type of cost of the school.
+    message Cost {
+
+        message Tuition {
+            int32 out_of_state = 1;
+
+            int32 in_state = 2;
+        }
+
+        Tuition tuition = 1; 
+
+        // TODO: Net Price: Other costs that includes books, insurance, etc.
+    }
+
+    message Completion {
+
+        float completion_rate_four_yr_total = 1;
+
+        float completion_rate_four_yr_asian = 2;
+    }
+
+    // Contains general student information of the school.
+    message Student {
+
+        // Contains population related data.
+        message Demographics {
+
+            // Contains gender based population ratio.
+            message GenderInfo {
+
+                float male_rate = 1;
+
+                float female_rate = 2;
+            }
+
+            // Contains race based population ratio.
+            message RaceInfo {
+                
+                // Native Hawaiians and Pacific Islanders
+                float nhpi = 1;
+
+                float non_residence_alien = 2;
+
+                float white = 3;
+
+                float black = 4;
+
+                float asian = 5;
+
+                float hispanic = 6;
+
+                float asian_pacific_islander = 7;
+
+                float two_or_more = 8;
+            }
+            
+            GenderInfo gender_info = 1;
+
+            RaceInfo race_Info = 2;
+        }
+
+        Demographics demographics = 1;
+    }
+
+    // Contains varies ranking information of the school.
+    message Ranking {
+
+        int32 us_overall = 1;
+
+        int32 world_overall = 2;
+    }
+
+    int32 id = 1;
+
+    SchoolType type = 2;
+
+    SchoolInfo school_info = 3;
+
+    Admission admission = 4;
+
+    Academics academics = 5;
+
+    Cost cost = 6;
+
+    Completion completion = 7;
+
+    Student student = 8;
+
+    Ranking ranking = 9;
+}

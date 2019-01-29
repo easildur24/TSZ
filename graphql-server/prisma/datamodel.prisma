@@ -1,0 +1,151 @@
+type SchoolDetailsItem {
+	id: ID! @unique
+	overview: Overview
+	images: [String]
+	admission: Admission
+	academics: Academics
+	cost: Cost
+	demographics: Demographics
+	geography: Geography
+}
+
+type Overview {
+	name: String!
+	description: String
+	notableRankings: [Ranking]
+	badges: [Badge]
+	location: Location
+	url: String
+	menOnly: Boolean
+	womenOnly: Boolean
+	operating: Boolean
+	onlineOnly: Boolean
+	deadline: DateTime
+	system: System
+}
+
+type Ranking {
+	name: String
+	rank: Int
+}
+
+# if a value is used only for rendering a badge, its logic will be in the resolver instead of FE. e.g religiousAffiliation 
+type Badge {
+	tooltip: String
+	url: String
+}
+
+type Location {
+	latittude: Float
+	longitude: Float
+	state: String
+	city: String
+	zip: String
+}
+
+enum System {
+	SEMESTER
+	QUARTER
+}
+
+type Admission {
+	acceptanceRate: Float
+	actScores: ActScores
+	satScores: SatScores
+	toeflMinScore: Int
+	ieltsMinScore: Int
+	earlyDecisionDeadline: DateTime
+	regularDeadline: DateTime
+	schoolResponseDeadline: DateTime
+	studentResponseDeadline: DateTime
+}
+
+type ActScores {
+	percentile25th: ActScoresTemplate @relation(name:"ActPercentile25")
+	mid: ActScoresTemplate @relation(name:"ActMid")
+	percentile75th: ActScoresTemplate @relation(name:"ActPercentile75")
+} 
+
+type ActScoresTemplate {
+	writing: Int 
+	english: Int
+	math: Int
+	cumulative: Int
+}
+
+type SatScoresTemplate {
+	reading: Int
+	writing: Int
+	math: Int
+}
+
+type SatScores {
+	percentile25th: SatScoresTemplate @relation(name:"SatPercentile25")
+	mid: SatScoresTemplate @relation(name:"SatMid")
+	percentile75th: SatScoresTemplate @relation(name:"SatPercentile75")
+}
+
+type Academics {
+	majors: [major]
+	colleges: [college]
+}
+
+type major {
+	name: String
+	rank: Int
+}
+
+type college {
+	name: String
+	rank: Int
+}
+
+type Cost {
+	tuitionUndergrad: Int
+	tuitionGrad: Int
+}
+
+type Demographics {
+	numStudents: Int
+	numUndergraduates: Int
+	numGraduates: Int
+}
+
+type Geography {
+	location: Location
+}
+
+input SchoolListInput {
+	sortBy: SortByColumn
+	offset: Int = 0
+	limit: Int = 20
+}
+
+enum SortByColumn {
+	US_RANK
+	SAT
+	ACT
+	NUM_STUDENTS
+	TOEFL
+}
+
+type SchoolListItem {
+	id: ID! @unique
+	name: String
+	usRanking: Ranking
+	badges: [Badge]
+	thumbnail: String
+	acceptanceRate: Float
+	actScores: ActScores
+	satScores: SatScores
+	toeflMinScore: Int
+	regularDeadline: DateTime
+}
+
+type SchoolSuggestion {
+	names: [String]
+}
+
+type SchoolRecommendation {
+	names: [String]
+}
