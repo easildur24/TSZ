@@ -15,13 +15,13 @@ type Overview {
 	description: String
 	notableRankings: [Ranking] 
 	badges: [Badge] 
-	location: Location
 	url: String
 	menOnly: Boolean
 	womenOnly: Boolean
 	operating: Boolean
 	onlineOnly: Boolean
 	deadline: DateTime
+        location: Location
 	system: System 
 }
 
@@ -167,3 +167,4 @@ type SchoolRecommendation {
         id: ID! @unique
 	names: [String]
 }
+
