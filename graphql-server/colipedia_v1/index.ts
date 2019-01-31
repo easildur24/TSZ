@@ -61,10 +61,10 @@ async function main() {
                 create: {
                   percentile25th: {
                     create: {
-                      writing: parseInt(schoolObj.latest.admissions.act_scores.25th_percentile.writing),
-                      english: parseInt(schoolObj.latest.admissions.act_scores.25th_percentile.english),
-                      math: parseInt(schoolObj.latest.admissions.act_scores.25th_percentile.math),
-                      cumulative: parseInt(schoolObj.latest.admissions.act_scores.25th_percentile.cumulative) 
+                      writing: parseInt(schoolObj.latest.admissions.act_scores['25th_percentile'].writing),
+                      english: parseInt(schoolObj.latest.admissions.act_scores['25th_percentile'].english),
+                      math: parseInt(schoolObj.latest.admissions.act_scores['25th_percentile'].math),
+                      cumulative: parseInt(schoolObj.latest.admissions.act_scores['25th_percentile'].cumulative)
                     } // end create
                   }, // end percentile25th
                   mid: {
@@ -77,10 +77,10 @@ async function main() {
                   }, // end mid
                   percentile75th: {
                     create: {
-                      writing: parseInt(schoolObj.latest.admissions.act_scores.75th_percentile.writing),
-                      english: parseInt(schoolObj.latest.admissions.act_scores.75th_percentile.english),
-                      math: parseInt(schoolObj.latest.admissions.act_scores.75th_percentile.math),
-                      cumulative: parseInt(schoolObj.latest.admissions.act_scores.75th_percentile.cumulative)
+                      writing: parseInt(schoolObj.latest.admissions.act_scores['75th_percentile'].writing),
+                      english: parseInt(schoolObj.latest.admissions.act_scores['75th_percentile'].english),
+                      math: parseInt(schoolObj.latest.admissions.act_scores['75th_percentile'].math),
+                      cumulative: parseInt(schoolObj.latest.admissions.act_scores['75th_percentile'].cumulative)
                     } // end create
                   } // end percentile75th
                 } // end create
@@ -89,9 +89,9 @@ async function main() {
                 create: {
                   percentile25th: {
                     create: {
-                      writing: parseInt(schoolObj.latest.admissions.sat_scores.25th_percentile.writing),
-                      reading: parseInt(schoolObj.latest.admissions.sat_scores.25th_percentile.critical_reading),
-                      math: parseInt(schoolObj.latest.admissions.sat_scores.25th_percentile.math),
+                      writing: parseInt(schoolObj.latest.admissions.sat_scores['25th_percentile'].writing),
+                      reading: parseInt(schoolObj.latest.admissions.sat_scores['25th_percentile'].critical_reading),
+                      math: parseInt(schoolObj.latest.admissions.sat_scores['25th_percentile'].math),
                     } // end create
                   }, // end percentile25th
                   mid: {
@@ -103,9 +103,9 @@ async function main() {
                   }, // end mid
                   percentile75th: {
                     create: {
-                      writing: parseInt(schoolObj.latest.admissions.sat_scores.75th_percentile.writing),
-                      reading: parseInt(schoolObj.latest.admissions.sat_scores.75th_percentile.critical_reading),
-                      math: parseInt(schoolObj.latest.admissions.sat_scores.75th_percentile.math),
+                      writing: parseInt(schoolObj.latest.admissions.sat_scores['75th_percentile'].writing),
+                      reading: parseInt(schoolObj.latest.admissions.sat_scores['75th_percentile'].critical_reading),
+                      math: parseInt(schoolObj.latest.admissions.sat_scores['75th_percentile'].math),
                     } // end create
                   } // end percentile75th
                 } // end create
@@ -114,7 +114,9 @@ async function main() {
           }, // end admission
           // academics: {}, // end academics
           cost: {
-            tuitionUndergrad: parseInt(schoolObj.latest.cost.tuition.out_of_state)
+            create: {
+              tuitionUndergrad: parseInt(schoolObj.latest.cost.tuition.out_of_state)
+            }
           }, // end cost
           geography: {
             create: {
