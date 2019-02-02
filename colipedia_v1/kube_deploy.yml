@@ -1,0 +1,88 @@
+apiVersion: v1
+kind: Service
+metadata:
+ name: mysql
+ labels:
+   app: mysql
+spec:
+ ports:
+ - port: 3306
+   targetPort: 3306
+ selector:
+   app: mysql
+---
+apiVersion: apps/v1 #  for k8s versions before 1.9.0 use apps/v1beta2  and before 1.8.0 use extensions/v1beta1
+kind: Deployment
+metadata:
+  name: mysql
+spec:
+  selector:
+    matchLabels:
+      app: mysql
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+      - name: mysql
+        image: mysql:5.7
+        ports:
+        - containerPort: 3306
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: prisma
+---
+apiVersion: v1
+kind: Service
+metadata:
+ name: prisma
+ labels:
+   app: prisma
+spec:
+ ports:
+ - port: 4466
+   targetPort: 4466
+ selector:
+   app: prisma
+---
+apiVersion: apps/v1 #  for k8s versions before 1.9.0 use apps/v1beta2  and before 1.8.0 use extensions/v1beta1
+kind: Deployment
+metadata:
+ name: prisma
+spec:
+ selector:
+   matchLabels:
+     app: prisma
+ replicas: 1
+ template:
+   metadata:
+     labels:
+       app: prisma
+   spec:
+     containers:
+     - name: mysql
+       image: prismagraphql/prisma:1.25
+       ports:
+       - containerPort: 4466
+       resources:
+         requests:
+           cpu: 100m
+           memory: 100Mi
+       env:
+       - name: PRISMA_CONFIG
+         value: |
+           port: 4466
+           databases:
+             default:
+               connector: mysql
+               host: mysql
+               port: 3306
+               user: root
+               password: prisma
+               migrations: true
