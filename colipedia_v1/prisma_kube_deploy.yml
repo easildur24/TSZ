@@ -42,7 +42,7 @@ spec:
            databases:
              default:
                connector: mysql
-               host: mysql
+               host: 35.247.14.210 #cloud public ip or cluster internal ip
                port: 3306
                user: root
                password: prisma
