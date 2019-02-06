@@ -1,6 +1,6 @@
 type SchoolDetailsItem {
 	id: ID! @unique
-	schoolId: String @unique
+	schoolId: String! @unique
 	overview: Overview 
 	images: [String]
 	admission: Admission 
@@ -147,7 +147,7 @@ enum SortByColumn {
 
 type SchoolListItem {
     	id: ID! @unique
-    	schoolId: String @unique
+    	schoolId: String! @unique
 	name: String
 	usRanking: Ranking 
 	badges: [Badge] 
