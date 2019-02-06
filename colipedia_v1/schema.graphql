@@ -3,11 +3,12 @@ schema {
 }
 
 type Query {
-  	schoolDetailsItem(id:ID!): SchoolDetailsItem
+  	schoolDetailsItem(schoolId:String!): SchoolDetailsItem
 }
 
 type SchoolDetailsItem {
 	id: ID!
+	schoolId: String!
 	overview: Overview
 	images: [String]
 	admission: Admission
@@ -140,6 +141,7 @@ enum SortByColumn {
 }
 
 type SchoolListItem {
+	schoolId: String!
 	name: String
 	usRanking: Ranking
 	badges: [Badge]
