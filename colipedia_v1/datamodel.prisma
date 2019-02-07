@@ -11,7 +11,7 @@ type SchoolDetailsItem {
 }
 
 type Overview {
-    id: ID! @unique
+   	id: ID! @unique
 	name: String!
 	description: String
 	notableRankings: [Ranking] 
@@ -22,7 +22,7 @@ type Overview {
 	operating: Boolean
 	onlineOnly: Boolean
 	deadline: DateTime
-    location: Location
+    	location: Location
 	system: System 
 }
 
@@ -34,7 +34,7 @@ type Ranking {
 
 # if a value is used only for rendering a badge, its logic will be in the resolver instead of FE. e.g religiousAffiliation 
 type Badge {
-    id: ID! @unique
+    	id: ID! @unique
 	tooltip: String
 	url: String
 }
@@ -54,27 +54,40 @@ enum System {
 }
 
 type Admission {
-    id: ID! @unique
+    	id: ID! @unique
 	acceptanceRate: Float
 	actScores: ActScores 
 	satScores: SatScores 
-	toeflMinScore: Int
-	ieltsMinScore: Int
+	toeflScores: ToeflScores
+	ieltsScores: IeltsScores
 	earlyDecisionDeadline: DateTime
 	regularDeadline: DateTime
 	schoolResponseDeadline: DateTime
 	studentResponseDeadline: DateTime
 }
 
+type ToeflScores {
+	id: ID! @unique
+	sourceUrl: String
+	min: Int
+}
+
+type IeltsScores {
+	id: ID! @unique
+	sourceUrl: String
+	min: Int
+}
+
 type ActScores {
         id: ID! @unique
+	sourceUrl: String
 	percentile25th: ActScoresTemplate @relation(name:"ActPercentile25")
 	mid: ActScoresTemplate @relation(name:"ActMid")
 	percentile75th: ActScoresTemplate @relation(name:"ActPercentile75") 
 } 
 
 type ActScoresTemplate {
-    id: ID! @unique
+  	id: ID! @unique
 	writing: Int 
 	english: Int
 	math: Int
@@ -82,52 +95,54 @@ type ActScoresTemplate {
 }
 
 type SatScoresTemplate {
-    id: ID! @unique
+    	id: ID! @unique
 	reading: Int
 	writing: Int
 	math: Int
 }
 
 type SatScores {
-    id: ID! @unique
+   	id: ID! @unique
+    	sourceUrl: String
 	percentile25th: SatScoresTemplate @relation(name:"SatPercentile25") 
 	mid: SatScoresTemplate @relation(name:"SatMid") 
 	percentile75th: SatScoresTemplate @relation(name:"SatPercentile75") 
 } 
 
 type Academics {
-    id: ID! @unique
+    	id: ID! @unique
 	majors: [major] 
 	colleges: [college] 
 }
 
 type major {
-    id: ID! @unique
+    	id: ID! @unique
 	name: String
 	rank: Int
 }
 
 type college  {
-    id: ID! @unique
+    	id: ID! @unique
 	name: String
 	rank: Int
 }
 
 type Cost  {
-    id: ID! @unique
+    	id: ID! @unique
+	sourceUrl: String
 	tuitionUndergrad: Int
 	tuitionGrad: Int
 }
 
 type Demographics  {
-    id: ID! @unique
+    	id: ID! @unique
 	numStudents: Int
 	numUndergraduates: Int
 	numGraduates: Int
 }
 
 type Geography  {
-    id: ID! @unique
+    	id: ID! @unique
 	location: Location 
 }
 
@@ -161,12 +176,12 @@ type SchoolListItem {
 }
 
 type SchoolSuggestion {
-    id: ID! @unique
+    	id: ID! @unique
 	names: [String]
 }
 
 type SchoolRecommendation {
-    id: ID! @unique
+    	id: ID! @unique
 	names: [String]
 }
 
