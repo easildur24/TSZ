@@ -29,7 +29,7 @@ type Overview {
 	operating: Boolean
 	onlineOnly: Boolean
 	deadline: DateTime
-    location: Location
+    	location: Location
 	system: System
 }
 
