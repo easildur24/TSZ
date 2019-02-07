@@ -63,15 +63,26 @@ type Admission {
 	acceptanceRate: Float
 	actScores: ActScores
 	satScores: SatScores
-	toeflMinScore: Int
-	ieltsMinScore: Int
+	toeflScores: ToeflScores
+	ieltsScores: IeltsScores
 	earlyDecisionDeadline: DateTime
 	regularDeadline: DateTime
 	schoolResponseDeadline: DateTime
 	studentResponseDeadline: DateTime
 }
 
+type ToeflScores {
+	sourceUrl: String
+	min: Int
+}
+
+type IeltsScores {
+	sourceUrl: String
+	min: Int
+}
+
 type ActScores {
+	sourceUrl: String
 	percentile25th: ActScoresTemplate
 	mid: ActScoresTemplate
 	percentile75th: ActScoresTemplate
@@ -91,6 +102,7 @@ type SatScoresTemplate {
 }
 
 type SatScores {
+	sourceUrl: String
 	percentile25th: SatScoresTemplate
 	mid: SatScoresTemplate
 	percentile75th: SatScoresTemplate
@@ -112,6 +124,7 @@ type college  {
 }
 
 type Cost  {
+	sourceUrl: String
 	tuitionUndergrad: Int
 	tuitionGrad: Int
 }
@@ -149,7 +162,7 @@ type SchoolListItem {
 	acceptanceRate: Float
 	actScores: ActScores
 	satScores: SatScores
-	toeflMinScore: Int
+	toeflScores: ToeflScores
 	regularDeadline: DateTime
 	religion: String
 }
