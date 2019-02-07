@@ -170,7 +170,7 @@ type SchoolListItem {
 	acceptanceRate: Float
 	actScores: ActScores 
 	satScores: SatScores 
-	toeflMinScore: Int
+	toeflScores: ToeflScores
 	regularDeadline: DateTime
 	religion: String
 }
