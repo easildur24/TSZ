@@ -1,5 +1,5 @@
 import * as React from "react";
-import "../../assets/css/App.css";
+import "../../assets/css/App.scss";
 
 import { SchoolInfoStore } from "../stores/SchoolInfo/SchoolInfoStore";
 import { UIStores } from "../UIStores";

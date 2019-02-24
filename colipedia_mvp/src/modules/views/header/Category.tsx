@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import "../../../assets/css/TopPanelContainer.css"
+import "../../../assets/css/TopPanelContainer.scss"
 
 class Category extends React.Component {
     constructor(props: any) {
