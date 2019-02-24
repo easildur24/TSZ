@@ -1,11 +1,11 @@
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import App from './App';
-import './index.css';
-import registerServiceWorker from './registerServiceWorker';
+import  { WebClient } from "./modules/WebClient"
+import registerServiceWorker from "./registerServiceWorker";
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('root') as HTMLElement
-);
+loadClient();
 registerServiceWorker();
+
+function loadClient() {
+    let webClient = new WebClient;
+    webClient.initialize();
+    webClient.load();
+}
