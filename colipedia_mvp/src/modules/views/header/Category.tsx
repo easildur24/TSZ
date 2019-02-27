@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import "../../../assets/css/TopPanelContainer.scss"
+import "../../../assets/scss/TopPanelContainer.scss";
 
 class Category extends React.Component {
     constructor(props: any) {
@@ -9,7 +9,7 @@ class Category extends React.Component {
 
     public render() {
         return (
-            <div className="CategoryButtonsContainer">
+            <div className="CategoryButtonsWrapper">
                 <button type="button" className="Left">{"Find My College"}</button>
                 <button type="button" className="Center">{"School Details"}</button>
                 <button type="button" className="Right">{"My Profile"}</button>

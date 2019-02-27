@@ -1,10 +1,12 @@
 import * as React from "react";
-import "../../assets/css/App.scss";
+import "../../assets/scss/App.scss";
 
 import { SchoolInfoStore } from "../stores/SchoolInfo/SchoolInfoStore";
 import { UIStores } from "../UIStores";
-import { TopPanel } from "./header/TopPanel";
 
+import { TopPanel } from "./header/TopPanel";
+import { ToolPanel } from "./tool/ToolPanel";
+import {ResultFullView} from "./result/ResultFullView";
 
 
 interface appProps {
@@ -21,6 +23,8 @@ class App extends React.Component<appProps> {
         return (
             <div className="App">
                 <TopPanel/>
+                <ToolPanel/>
+                <ResultFullView/>
             </div>
         );
     }

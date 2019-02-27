@@ -8,6 +8,7 @@ interface School {
     usRank: number;
     worldRank: number;
     satMin: number;
+    imageUrl: any;
 }
 
 export { SchoolInfo, School };

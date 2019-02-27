@@ -1,0 +1,16 @@
+.ResultCardContainer {
+  height: 10vh;
+  border: 3px solid black;
+
+  cursor: pointer;
+  width: 80%;
+  display: flex;
+  flex-wrap: wrap;
+
+  > img {
+    height: 100%;
+    width: 15%;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+}

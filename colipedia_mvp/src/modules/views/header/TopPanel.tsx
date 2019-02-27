@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import "../../../assets/css/TopPanelContainer.scss"
+import "../../../assets/scss/TopPanelContainer.scss"
 
 import { Category } from "./Category";
 
